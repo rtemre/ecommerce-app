@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import CartIcon from './CartIcon';
-import CartModal from './CartModal';
+import React, { useState } from "react";
+import CartIcon from "./CartIcon";
+import CartModal from "./CartModal";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -16,12 +17,9 @@ const Header: React.FC = () => {
               </h1>
             </div>
             <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
-              >
+              <Link href="/cart" className="ml-4">
                 <CartIcon />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

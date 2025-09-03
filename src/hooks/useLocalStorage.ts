@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { loadCartFromStorage } from '@/store/cartSlice';
-import { CartItem } from '@/store/cartSlice';
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { loadCartFromStorage } from "@/store/cartSlice";
 
 export const useLocalStorage = () => {
   const dispatch = useAppDispatch();
@@ -9,19 +8,19 @@ export const useLocalStorage = () => {
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('ecommerce-cart');
+    const savedCart = localStorage.getItem("ecommerce-cart");
     if (savedCart) {
       try {
         const parsedCart = JSON.parse(savedCart);
         dispatch(loadCartFromStorage(parsedCart));
       } catch (error) {
-        console.error('Error loading cart from localStorage:', error);
+        console.error("Error loading cart from localStorage:", error);
       }
     }
   }, [dispatch]);
 
   // Save cart to localStorage whenever cart state changes
   useEffect(() => {
-    localStorage.setItem('ecommerce-cart', JSON.stringify(cartState));
+    localStorage.setItem("ecommerce-cart", JSON.stringify(cartState));
   }, [cartState]);
 };
